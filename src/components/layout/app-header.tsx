@@ -8,7 +8,7 @@ import { Logo } from './logo';
 import { UserNav } from './user-nav';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import React from 'react';
 
 const navItems = [
@@ -65,8 +65,11 @@ export function AppHeader() {
                     <span className="sr-only">Open menu</span>
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-[280px] bg-primary p-4">
-                  <div className="mb-6">
+                <SheetContent side="right" className="w-[280px] bg-primary p-4 text-white">
+                  <SheetHeader>
+                    <SheetTitle className="sr-only">Mobile Navigation Menu</SheetTitle>
+                  </SheetHeader>
+                  <div className="mb-6 mt-4"> {/* Adjusted margin for logo after sr-only title */}
                     <Logo iconColorClassName="text-accent" textColorClassName="text-white" />
                   </div>
                   <nav className="flex flex-col space-y-3">
