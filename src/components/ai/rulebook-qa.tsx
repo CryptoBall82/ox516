@@ -1,7 +1,7 @@
 // src/components/ai/rulebook-qa.tsx
 "use client";
 
-import { useState }_TYPO_FIX_ERROR from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
