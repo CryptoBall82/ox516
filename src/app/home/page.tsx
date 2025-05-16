@@ -1,56 +1,137 @@
 // src/app/home/page.tsx
-"use client";
 
-import { HomeHeader } from '@/components/HomeHeader';
-import { NavbarHome } from '@/components/NavbarHome';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+'use client';
+
+import React from 'react';
+import {HomeHeader} from '@/components/HomeHeader';
+import {NavbarHome} from '@/components/NavbarHome';
 import Image from 'next/image';
+import SportsBaseballOutlinedIcon from '@mui/icons-material/SportsBaseballOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import {useRouter} from 'next/navigation';
+import officiaXIcon from '../../app/assets/ox icon white 225.png'; // Corrected import for the ox icon
 
-export default function HomePage() {
+export default function Home() {
+  const router = useRouter();
+
+  const navigateToLeaguesPage = () => router.push('/leagues');
+  const navigateToSchedulePage = () => router.push('/schedule');
+  const navigateToToolsPage = () => router.push('/tools');
+  const navigateToOfficiaX_AIPage = () => router.push('/a-i');
+
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
       <HomeHeader />
-      <main className="flex-grow container mx-auto px-4 py-8 pt-24 pb-24"> {/* pt-24 for header, pb-24 for navbar */}
-        <Card className="shadow-xl border-accent/50">
-          <CardHeader>
-            <CardTitle className="text-3xl font-bold text-accent">Home Page</CardTitle>
-            <CardDescription className="text-lg text-muted-foreground">
-              Welcome to your OfficiaX home page!
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <p className="text-muted-foreground">
-              This is the main content area for the home page. You can add various components and information here.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-card p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold mb-3 text-primary">Quick Stats</h3>
-                <p className="text-sm text-muted-foreground">Games this week: 3</p>
-                <p className="text-sm text-muted-foreground">Open Assignments: 1</p>
-                <p className="text-sm text-muted-foreground">Upcoming Certifications: 0</p>
-              </div>
-              <div className="bg-card p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold mb-3 text-primary">Announcements</h3>
-                <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
-                  <li>Rulebook update meeting next Monday.</li>
-                  <li>New training videos available in Toolbox.</li>
-                </ul>
-              </div>
+      <div className="flex-grow relative w-full">
+        <RectangleContainer>
+          <div className="flex justify-center">
+            <Image
+              src={officiaXIcon}
+              alt="OfficiaX Icon"
+              data-ai-hint="logo icon"
+              width={175}
+              height={175}
+              style={{
+                position: 'absolute',
+                top: '30px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+              }}
+              onError={(e: any) => {
+                e.currentTarget.onerror = null; // prevents looping
+                e.currentTarget.src = 'https://picsum.photos/175/175';
+              }}
+            />
+          </div>
+          <div className="absolute bottom-[30px] left-0 right-0 flex justify-center">
+            <div className="grid grid-cols-2 gap-y-[25px] gap-x-[25px] p-4"> {/* Updated gap */}
+              {/* Leagues Button */}
+              <button
+                onClick={navigateToLeaguesPage}
+                className="w-[100px] h-[100px] bg-[rgba(255,255,255,1)] border-[2px] border-[rgba(204,0,0,1)] shadow-[0_0_8px_4px_rgba(0,0,0,.5)] rounded-md hover:scale-105 transition-transform relative" // Updated shadow
+              >
+                {/* Centered icon and text */}
+                <div className="flex flex-col items-center justify-center h-full"> {/* Removed pt-4 */}
+                  <SportsBaseballOutlinedIcon
+                    style={{color: 'rgba(0,0,0,1)', width: '35px', height: '35px'}} // Updated size
+                  />
+                  {/* Adjusted text positioning */}
+                  <span
+                    className="text-[rgba(0,0,0,1)] font-semibold absolute bottom-0.5" // Use absolute positioning for text, changed bottom-1 to bottom-0.5
+                    style={{fontSize: '14pt'}} // Updated font size
+                  >
+                    Leagues
+                  </span>
+                </div>
+              </button>
+
+              {/* Schedule Button */}
+              <button
+                onClick={navigateToSchedulePage}
+                className="w-[100px] h-[100px] bg-[rgba(255,255,255,1)] border-[2px] border-[rgba(204,0,0,1)] shadow-[0_0_8px_4px_rgba(0,0,0,.5)] rounded-md hover:scale-105 transition-transform relative" // Updated shadow
+              >
+                {/* Centered icon and text */}
+                <div className="flex flex-col items-center justify-center h-full"> {/* Removed pt-4 */}
+                  <CalendarMonthOutlinedIcon
+                    style={{color: 'rgba(0,0,0,1)', width: '35px', height: '35px'}} // Updated size
+                  />
+                  {/* Adjusted text positioning */}
+                  <span
+                    className="text-[rgba(0,0,0,1)] font-semibold absolute bottom-0.5" // Use absolute positioning
+                    style={{fontSize: '14pt'}} // Updated font size
+                  >
+                    Schedule
+                  </span>
+                </div>
+              </button>
+
+              {/* Tools Button */}
+              <button
+                onClick={navigateToToolsPage}
+                className="w-[100px] h-[100px] bg-[rgba(255,255,255,1)] border-[2px] border-[rgba(204,0,0,1)] shadow-[0_0_8px_4px_rgba(0,0,0,.5)] rounded-md hover:scale-105 transition-transform relative" // Updated shadow
+              >
+                {/* Centered icon and text */}
+                <div className="flex flex-col items-center justify-center h-full"> {/* Removed pt-4 */}
+                  <ConstructionOutlinedIcon
+                    style={{color: 'rgba(0,0,0,1)', width: '35px', height: '35px'}} // Updated size
+                  />
+                   {/* Adjusted text positioning */}
+                  <span
+                    className="text-[rgba(0,0,0,1)] font-semibold absolute bottom-0.5" // Use absolute positioning
+                    style={{fontSize: '14pt'}} // Updated font size
+                  >
+                    Tools
+                  </span>
+                </div>
+              </button>
+
+              {/* OfficiaX AI Button */}
+              <button
+                onClick={navigateToOfficiaX_AIPage}
+                className="w-[100px] h-[100px] bg-[rgba(255,255,255,1)] border-[2px] border-[rgba(204,0,0,1)] shadow-[0_0_8px_4px_rgba(0,0,0,.5)] rounded-md hover:scale-105 transition-transform relative" // Updated shadow
+              >
+                {/* Centered icon and text */}
+                <div className="flex flex-col items-center justify-center h-full"> {/* Removed pt-4 */}
+                  <AutoAwesomeOutlinedIcon
+                    style={{color: 'rgba(0,0,0,1)', width: '35px', height: '35px'}} // Updated size
+                  />
+                  {/* Adjusted text positioning */}
+                  <span
+                    className="text-[rgba(0,0,0,1)] font-semibold absolute bottom-0.5" // Use absolute positioning
+                    style={{fontSize: '13.5pt'}} // Updated font size
+                  >
+                    OfficiaX AI
+                  </span>
+                </div>
+              </button>
             </div>
-            <div className="text-center">
-              <Image
-                src="https://placehold.co/600x300.png"
-                alt="Home page illustration"
-                width={600}
-                height={300}
-                className="rounded-lg shadow-lg mx-auto border border-border"
-                data-ai-hint="sports stadium field"
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </main>
+          </div>
+        </RectangleContainer>
+      </div>
       <NavbarHome />
     </div>
   );
 }
+
