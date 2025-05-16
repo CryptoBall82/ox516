@@ -27,7 +27,7 @@ export default function AiAssistantPage() {
 
           <Card className="hover:shadow-accent/20 transition-shadow duration-300">
             <CardHeader>
-              <CardTitle>Interactive AI Agent</CardTitle>
+              <CardTitle>OfficiaX AI Assistant</CardTitle>
               <CardDescription>Chat with our AI assistant for quick help.</CardDescription>
             </CardHeader>
             <CardContent>
