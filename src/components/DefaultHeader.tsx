@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image'; // Import the next/image component
-import { ChevronLeft, Menu } from 'lucide-react'; // Replaced MUI icons with lucide-react
+import { ChevronLeft, Menu } from 'lucide-react'; // Use lucide-react icons
 import { useRouter } from 'next/navigation';
 
 // Removed import for oxImage as it's not found
@@ -31,7 +31,7 @@ const DefaultHeader: React.FC = () => {
       {/* Center section - Contains the Image */}
       <div className="flex items-center justify-center flex-grow">
         <Image
-          src="https://placehold.co/175x50.png"
+          src="https://placehold.co/175x50.png" // Using placeholder image
           alt="OX Logo"
           height={50}
           width={175}

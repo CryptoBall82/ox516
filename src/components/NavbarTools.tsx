@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import { Baseball, CalendarDays, Home, Construction, Sparkles } from 'lucide-react'; // Replaced MUI icons
+import { Users, CalendarDays, Home, Construction, Sparkles } from 'lucide-react'; // Replaced MUI icons and Baseball with Users
 import {useRouter} from 'next/navigation';
 
 interface NavbarIconProps {
@@ -18,8 +18,8 @@ const NavbarIcon: React.FC<NavbarIconProps> = ({name, text, onClick, isActive}) 
 
   let iconComponent;
   switch (name) {
-    case 'Baseball':
-      iconComponent = <Baseball className={iconClasses} size={24} />;
+    case 'Users': // Changed from 'Baseball'
+      iconComponent = <Users className={iconClasses} size={24} />; // Changed from Baseball
       break;
     case 'Calendar':
       iconComponent = <CalendarDays className={iconClasses} size={24} />;
@@ -58,7 +58,7 @@ const NavbarTools: React.FC = () => {
       className="fixed bottom-0 w-full h-[75px] bg-primary shadow-[0_-4px_10px_4px_rgba(187,187,187,.5)] z-10 flex items-center justify-between px-4"
     >
       <div style={{paddingLeft: '5px'}}>
-        <NavbarIcon name="Baseball" text="Leagues" onClick={navigateToLeaguesPage} isActive={false} />
+        <NavbarIcon name="Users" text="Leagues" onClick={navigateToLeaguesPage} isActive={false} />
       </div>
       <NavbarIcon name="Calendar" text="Schedule" onClick={navigateToSchedulePage} isActive={false} />
       <NavbarIcon name="Home" text="Home" onClick={navigateToHomePage} isActive={false} />
