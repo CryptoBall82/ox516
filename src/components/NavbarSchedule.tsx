@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import { Users, CalendarDays, Home, Construction, Sparkles } from 'lucide-react'; // Replaced MUI icons and Baseball with Users
+import { Users, CalendarDays, Home, Construction, Sparkles } from 'lucide-react'; 
 import {useRouter} from 'next/navigation';
 
 interface NavbarIconProps {
@@ -18,8 +18,8 @@ const NavbarIcon: React.FC<NavbarIconProps> = ({name, text, onClick, isActive}) 
 
   let iconComponent;
   switch (name) {
-    case 'Users': // Changed from 'Baseball'
-      iconComponent = <Users className={iconClasses} size={24} />; // Changed from Baseball
+    case 'Users': 
+      iconComponent = <Users className={iconClasses} size={24} />; 
       break;
     case 'Calendar':
       iconComponent = <CalendarDays className={iconClasses} size={24} />;
@@ -50,8 +50,8 @@ const NavbarSchedule: React.FC = () => {
   const navigateToLeaguesPage = () => router.push('/leagues');
   const navigateToSchedulePage = () => router.push('/schedule');
   const navigateToHomePage = () => router.push('/home');
-  const navigateToToolsPage = () => router.push('/tools');
-  const navigateToOfficiaX_AIPage = () => router.push('/a-i');
+  const navigateToToolsPage = () => router.push('/toolbox'); // Corrected path
+  const navigateToOfficiaX_AIPage = () => router.push('/ai-assistant'); // Assuming /ai-assistant
 
   return (
     <nav
