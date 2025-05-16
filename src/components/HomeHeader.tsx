@@ -4,8 +4,7 @@
 import React from 'react';
 import Image from 'next/image'; // Import the next/image component
 import { Menu } from 'lucide-react'; // Replaced MUI icon with lucide-react
-
-// Removed import for oxImage as it's not found
+import oxImage from '../app/assets/OX lett white175F.png';
 
 const HomeHeader: React.FC = () => {
   return (
@@ -21,7 +20,7 @@ const HomeHeader: React.FC = () => {
       {/* Center section - Now contains the Image */}
       <div className="flex items-center justify-center flex-grow">
         <Image
-          src="https://placehold.co/175x50.png"
+          src={oxImage}
           alt="OX Logo"
           height={50}
           width={175}

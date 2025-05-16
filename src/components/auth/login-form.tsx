@@ -84,7 +84,7 @@ export function LoginForm() {
           <Checkbox id="rememberMe" {...register("rememberMe")} />
           <Label htmlFor="rememberMe" className="text-sm font-normal text-muted-foreground">Remember me</Label>
         </div>
-        <Link href="#" className="text-sm text-accent hover:underline">
+        <Link href="/forgot-password" className="text-sm text-accent hover:underline">
           Forgot password?
         </Link>
       </div>
