@@ -7,6 +7,7 @@
   packages = [
     pkgs.nodejs_20
     pkgs.zulu
+    pkgs.material-design-icons
   ];
   # Sets environment variables in the workspace
   env = {};
@@ -21,6 +22,7 @@
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       # "vscodevim.vim"
+      "PKief.material-icon-theme"
     ];
     workspace = {
       onCreate = {
