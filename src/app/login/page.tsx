@@ -28,7 +28,7 @@ export default function LoginPage() {
       <Card className="w-full max-w-md bg-card shadow-2xl">
         <CardHeader className="text-center">
           <CardTitle className="text-3xl font-bold tracking-tight">Welcome Back, Official!</CardTitle>
-          <CardDescription>Log in to access your OfficiaX dashboard.</CardDescription>
+          <CardDescription>Log in to access your OfficiaX home.</CardDescription> {/* Changed "dashboard" to "home" */}
         </CardHeader>
         <CardContent>
           <LoginForm />

@@ -12,7 +12,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import React from 'react';
 
 const navItems = [
-  { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/dashboard', label: 'Home', icon: LayoutDashboard }, // Changed label from 'Dashboard' to 'Home'
   { href: '/schedule', label: 'Schedule', icon: CalendarDays },
   { href: '/toolbox', label: 'Toolbox', icon: Briefcase },
   { href: '/ai-assistant', label: 'AI Assistant', icon: Sparkles },
