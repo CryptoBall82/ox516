@@ -1,8 +1,9 @@
 // src/app/ai-assistant/page.tsx
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import ClientIframe from "@/components/client-iframe";
-import { RulebookQA } from "@/components/ai/rulebook-qa";
-import { RuleInterpretation } from "@/components/ai/rule-interpretation";
+// Removed RulebookQA and RuleInterpretation imports as they are no longer used
+// import { RulebookQA } from "@/components/ai/rulebook-qa";
+// import { RuleInterpretation } from "@/components/ai/rule-interpretation";
 import { Bot } from "lucide-react";
 import { DefaultHeader } from "@/components/DefaultHeader";
 import { NavbarAI } from "@/components/NavbarAI";
@@ -43,10 +44,13 @@ export default function AiAssistantPage() {
             </CardContent>
           </Card>
 
+          {/* Removed the grid containing RulebookQA and RuleInterpretation */}
+          {/* 
           <div className="grid gap-8 md:grid-cols-1 lg:grid-cols-2">
             <RulebookQA />
             <RuleInterpretation />
-          </div>
+          </div> 
+          */}
         </div>
       </main>
       <NavbarAI />
