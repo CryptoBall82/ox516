@@ -58,7 +58,10 @@ export default function Leagues() {
                 top: '130px', // Position image below text (30px top + text height + margin)
                 left: '50%',
                 transform: 'translateX(-50%)',
+                width: 'auto',
+                height: '129px',
               }}
+              priority
               onError={(e: any) => {
                 e.currentTarget.onerror = null; // prevents looping
                 e.currentTarget.src = 'https://picsum.photos/175/175';
