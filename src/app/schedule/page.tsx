@@ -27,12 +27,6 @@ const AppleLogoIcon = () => (
 
 // Define RectangleContainer or import if it's a separate component
 // For now, using a simple div as a placeholder for RectangleContainer
-const RectangleContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="bg-white shadow-lg rounded-lg p-4 md:p-6 mx-auto my-4 w-full max-w-md">
-    {children}
-  </div>
-);
-
 
 export default function Schedule() {
   const router = useRouter();
@@ -49,55 +43,50 @@ export default function Schedule() {
   };
 
 
-  return (
-    <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
+  return (    
+  <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
       <DefaultHeader />
       <div className="flex-grow relative w-full">
-        <RectangleContainer>
-          {/* Container for Image and Text */}
-          <div className="flex flex-col items-center pt-8"> {/* Added padding top for spacing */}
-            {/* Schedule Text */}
-            <span
-              className="font-bold text-3xl text-black mb-4" // Margin bottom for spacing
-            >
-              Schedule
-            </span>
+        {/* Container for Image and Text */}
+        <div className="flex flex-col items-center pt-8"> {/* Added padding top for spacing */}
+          {/* Schedule Text */}
+          <span
+            className="font-bold text-3xl text-black mb-4" // Margin bottom for spacing
+          >
+            Schedule
+          </span>
 
-            {/* Image Display */}
-            <Image
-              src={scheduleImage} // Using placeholder image
-              alt="Calendar icon for Schedule page"
-              width={225}
-              height={225}
-              className="mb-8"
-              data-ai-hint="calendar schedule"
-            />
-          </div>
+          {/* Image Display */}
+          <Image
+            src={scheduleImage} // Using placeholder image
+            alt="Calendar icon for Schedule page"
+            width={225}
+            height={225}
+            className="mb-8"
+            data-ai-hint="calendar schedule" />
+        </div>
 
-          {/* Buttons Container - Centered */}
-          <div className="flex flex-col items-center justify-center"> {/* Removed h-full to allow natural height */}
-            {/* Google Calendar Button */}
-            <Button
-              className="w-[225px] h-[80px] bg-white text-black border-2 border-[rgba(204,0,0,1)] hover:bg-gray-100 rounded-md shadow-[0_0_8px_4px_rgba(0,0,0,.5)] hover:scale-105 transition-transform relative mb-8 font-bold flex items-center px-4 space-x-3"
-              onClick={navigateToGoogleCalendar}
-            >
-              <GoogleLogoIcon />
-              <span className="flex-grow text-center text-lg">Google Calendar</span>
-            </Button>
+        {/* Buttons Container - Centered */}
+        <div className="flex flex-col items-center justify-center"> {/* Removed h-full to allow natural height */}
+          {/* Google Calendar Button */}
+          <Button
+            className="w-[225px] h-[80px] bg-white text-black border-2 border-[rgba(204,0,0,1)] hover:bg-gray-100 rounded-md shadow-[0_0_8px_4px_rgba(0,0,0,.5)] hover:scale-105 transition-transform relative mb-8 font-bold flex items-center px-4 space-x-3"
+            onClick={navigateToGoogleCalendar}
+          >
+            <GoogleLogoIcon />
+            <span className="flex-grow text-center text-lg">Google Calendar</span>
+          </Button>
 
-            {/* iCal Button */}
-            <Button
-              className="w-[225px] h-[80px] bg-white text-black border-2 border-[rgba(204,0,0,1)] hover:bg-gray-100 rounded-md shadow-[0_0_8px_4px_rgba(0,0,0,.5)] hover:scale-105 transition-transform relative font-bold flex items-center px-4 space-x-3"
-              onClick={navigateToICal}
-            >
-              <AppleLogoIcon />
-              <span className="flex-grow text-center text-lg">iCal</span>
-            </Button>
-          </div>
-        </RectangleContainer>
-      </div>
-      <NavbarSchedule />
-    </div>
+          {/* iCal Button */}
+          <Button
+            className="w-[225px] h-[80px] bg-white text-black border-2 border-[rgba(204,0,0,1)] hover:bg-gray-100 rounded-md shadow-[0_0_8px_4px_rgba(0,0,0,.5)] hover:scale-105 transition-transform relative font-bold flex items-center px-4 space-x-3"
+            onClick={navigateToICal}
+          >
+            <AppleLogoIcon />
+            <span className="flex-grow text-center text-lg">iCal</span>
+          </Button>
+        </div>
+    </div><NavbarSchedule /></div>
   );
 }
 
