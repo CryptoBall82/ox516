@@ -25,7 +25,6 @@ export default function Home() {
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
       <HomeHeader />
       <div className="flex-grow relative w-full">
-        <RectangleContainer>
           <div className="flex justify-center">
             <Image
               src={officiaXIcon}
@@ -128,7 +127,6 @@ export default function Home() {
               </button>
             </div>
           </div>
-        </RectangleContainer>
       </div>
       <NavbarHome />
     </div>

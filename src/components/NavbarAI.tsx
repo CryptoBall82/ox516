@@ -1,8 +1,11 @@
-
 'use client';
 
 import React from 'react';
-import { Users, CalendarDays, Home, Construction, Sparkles } from 'lucide-react'; 
+import SportsBaseballOutlinedIcon from '@mui/icons-material/SportsBaseballOutlined';
+import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
+import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
+import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
+import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
 import {useRouter} from 'next/navigation';
 
 interface NavbarIconProps {
@@ -13,25 +16,25 @@ interface NavbarIconProps {
 }
 
 const NavbarIcon: React.FC<NavbarIconProps> = ({name, text, onClick, isActive}) => {
-  const iconClasses = isActive ? 'text-black' : 'text-primary-foreground'; 
-  const textClasses = isActive ? 'text-black' : 'text-primary-foreground';
+  const iconColor = isActive ? 'rgba(0,0,0,1)' : 'rgba(255,255,255,1)';
+  const textColor = isActive ? 'rgba(0,0,0,1)' : 'rgba(255,255,255,1)'; // Use textColor for text
 
   let iconComponent;
   switch (name) {
-    case 'Users': 
-      iconComponent = <Users className={iconClasses} size={24} />; 
+    case 'Baseball':
+      iconComponent = <SportsBaseballOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
       break;
     case 'Calendar':
-      iconComponent = <CalendarDays className={iconClasses} size={24} />;
+      iconComponent = <CalendarMonthOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
       break;
     case 'Home':
-      iconComponent = <Home className={iconClasses} size={24} />;
+      iconComponent = <CottageOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
       break;
     case 'Tools':
-      iconComponent = <Construction className={iconClasses} size={24} />;
+      iconComponent = <ConstructionOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
       break;
-    case 'Auto awesome': 
-      iconComponent = <Sparkles className={iconClasses} size={24} />;
+    case 'Auto awesome':
+      iconComponent = <AutoAwesomeOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
       break;
     default:
       iconComponent = null;
@@ -40,7 +43,7 @@ const NavbarIcon: React.FC<NavbarIconProps> = ({name, text, onClick, isActive}) 
   return (
     <div className="flex flex-col items-center justify-center cursor-pointer" onClick={onClick}>
       {iconComponent}
-      <span className={`text-xs ${textClasses}`}>{text}</span>
+      <span className="text-xs" style={{color: textColor}}>{text}</span> {/* Use textColor */}
     </div>
   );
 };
@@ -50,15 +53,15 @@ const NavbarAI: React.FC = () => {
   const navigateToLeaguesPage = () => router.push('/leagues');
   const navigateToSchedulePage = () => router.push('/schedule');
   const navigateToHomePage = () => router.push('/home');
-  const navigateToToolsPage = () => router.push('/toolbox'); // Corrected path
-  const navigateToOfficiaX_AIPage = () => router.push('/ai-assistant'); // Assuming /ai-assistant is the correct path
+  const navigateToToolsPage = () => router.push('/tools');
+  const navigateToOfficiaX_AIPage = () => router.push('/a-i');
 
   return (
     <nav
-      className="fixed bottom-0 w-full h-[75px] bg-primary shadow-[0_-4px_10px_4px_rgba(187,187,187,.5)] z-10 flex items-center justify-between px-4"
+      className="fixed bottom-0 w-full h-[75px] bg-[rgba(204,0,0,1)] shadow-[0_-4px_10px_4px_rgba(187,187,187,.5)] z-10 flex items-center justify-between px-4"
     >
       <div style={{paddingLeft: '5px'}}>
-        <NavbarIcon name="Users" text="Leagues" onClick={navigateToLeaguesPage} isActive={false} /> 
+        <NavbarIcon name="Baseball" text="Leagues" onClick={navigateToLeaguesPage} isActive={false} />
       </div>
       <NavbarIcon name="Calendar" text="Schedule" onClick={navigateToSchedulePage} isActive={false} />
       <NavbarIcon name="Home" text="Home" onClick={navigateToHomePage} isActive={false} />
