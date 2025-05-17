@@ -18,8 +18,8 @@ export default function Home() {
 
   const navigateToLeaguesPage = () => router.push('/leagues');
   const navigateToSchedulePage = () => router.push('/schedule');
-  const navigateToToolsPage = () => router.push('/tools');
-  const navigateToOfficiaX_AIPage = () => router.push('/a-i');
+  const navigateToToolsPage = () => router.push('/toolbox');
+  const navigateToOfficiaX_AIPage = () => router.push('/ai-assistant');
 
   return (
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">

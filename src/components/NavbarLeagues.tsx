@@ -53,8 +53,8 @@ const NavbarLeagues: React.FC = () => {
   const navigateToLeaguesPage = () => router.push('/leagues');
   const navigateToSchedulePage = () => router.push('/schedule');
   const navigateToHomePage = () => router.push('/home');
-  const navigateToToolsPage = () => router.push('/tools');
-  const navigateToOfficiaX_AIPage = () => router.push('/a-i');
+  const navigateToToolsPage = () => router.push('/toolbox');
+  const navigateToOfficiaX_AIPage = () => router.push('/ai-assistant');
 
   return (
     <nav
