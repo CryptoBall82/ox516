@@ -13,6 +13,8 @@ import { useAuth } from '@/contexts/auth-context';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { AlertCircle } from 'lucide-react';
 import Link from 'next/link';
+import { AuthHeader } from '@/components/AuthHeader';
+
 
 const loginSchema = z.object({
   email: z.string().email({ message: "Invalid email address." }),
