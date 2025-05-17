@@ -6,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import Link from 'next/link';
 import { useAuthRedirect } from '@/hooks/use-auth-redirect';
 import { Skeleton } from '@/components/ui/skeleton';
+import { AuthHeader } from '@/components/AuthHeader';
+
 
 export default function LoginPage() {
   const {isLoading, isAuthenticated} = useAuthRedirect({ requireAuth: false });
