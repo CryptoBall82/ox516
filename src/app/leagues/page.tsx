@@ -66,7 +66,7 @@ export default function Leagues() {
             />
 
           </div>
-          <div className="absolute bottom-[40px] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4 w-full px-4">
+          <div className="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4 w-full px-4">
             {buttonNames.map((name) => (
               <Button
                 key={name}

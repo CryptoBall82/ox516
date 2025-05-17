@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { DefaultHeader } from '@/components/DefaultHeader'; // Assuming this is your fixed main app header
-import { NavbarLeagues } from '@/components/NavbarLeagues'; // Assuming this is your fixed bottom navbar
-import { useRouter } from 'next/navigation';
+import { DefaultHeader } from '@/components/DefaultHeader';
+import { NavbarLeagues } from '@/components/NavbarLeagues';
+// import { useRouter } from 'next/navigation'; // Not used in this component for now
 
-// Define TypeScript Interfaces
+// Define TypeScript Interfaces - MODIFIED Park interface
 interface Field {
     name: string;
     status: "Open" | "Closed" | "Unknown";
@@ -16,29 +16,37 @@ interface Field {
 interface Park {
     name: string;
     address: string;
+    source: string; // <<< ADDED THIS LINE to match your JSON
     overallStatus: "Open" | "Closed" | "Unknown";
     fields: Field[];
 }
 
-// This is the "Park Field Status" title bar.
-// It will now scroll with the page, appearing below your main DefaultHeader.
-const PageTitleBar: React.FC = () => {
+// Props for PageTitleBar
+interface PageTitleBarProps {
+    title: string;
+}
+
+// PageTitleBar Component - MODIFIED to accept a title prop
+const PageTitleBar: React.FC<PageTitleBarProps> = ({ title }) => {
     return (
-        // Removed: fixed, top-[80px], left-0, right-0, z-10
-        // Added: py-4 (original p-4 included horizontal padding, retaining vertical)
-        // Retained: bg-blue-600, text-white, shadow-md, h-[60px], flex, items-center, justify-center
-        <header className="bg-blue-600 text-white py-4 shadow-md h-[60px] flex items-center justify-center">
-            <h1 className="text-2xl font-bold text-center leading-[28px]">AYBA Field Statuses</h1>
+        <header className="bg-blue-600 text-white py-4 shadow-md h-[60px] flex items-center justify-center w-full">
+            <h1 className="text-2xl font-bold text-center leading-[28px]">{title}</h1>
         </header>
     );
 };
 
-// Main FieldStatusDisplay Component
-const FieldStatusDisplay: React.FC = () => {
-    const [parksData, setParksData] = useState<Park[]>([]);
+// Props for FieldStatusDisplay
+interface FieldStatusDisplayProps {
+    sourceFilter: string; // To filter which park system to show
+    pageTitle: string;    // To set the title in PageTitleBar
+}
+
+// Main FieldStatusDisplay Component - MODIFIED to accept and use props
+const FieldStatusDisplay: React.FC<FieldStatusDisplayProps> = ({ sourceFilter, pageTitle }) => {
+    const [allParksData, setAllParksData] = useState<Park[]>([]); // Renamed from parksData
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
-    const router = useRouter();
+    // const router = useRouter(); // Not currently used
 
     useEffect(() => {
         const fetchData = async () => {
@@ -50,7 +58,7 @@ const FieldStatusDisplay: React.FC = () => {
                     throw new Error(`Network response was not ok: ${response.statusText}`);
                 }
                 const data: Park[] = await response.json();
-                setParksData(data);
+                setAllParksData(data); // Store all fetched data
             } catch (e: any) {
                 console.error("Fetch error:", e);
                 setError(e.message || 'Failed to fetch field status data.');
@@ -61,9 +69,10 @@ const FieldStatusDisplay: React.FC = () => {
         fetchData();
     }, []);
 
-    const displayParks = parksData;
+    // MODIFIED: Filter the parks based on the sourceFilter prop
+    const displayParks = allParksData.filter(park => park.source === sourceFilter);
 
-    const getStatusColor = (status: "Open" | "Closed" | "Unknown") => {
+    const getStatusColorClasses = (status: "Open" | "Closed" | "Unknown") => { // Renamed from getStatusColor for clarity
         switch (status) {
             case "Open": return "bg-green-100 text-green-700 border-green-500";
             case "Closed": return "bg-red-100 text-red-700 border-red-500";
@@ -72,18 +81,15 @@ const FieldStatusDisplay: React.FC = () => {
         }
     };
 
-    // Base class for the content area of loading/error/no-data states
-    const statusMessageWrapperClass = "p-6 text-center text-gray-700 text-xl";
+    const statusMessageWrapperClass = "p-6 text-center text-gray-700 text-xl mt-4";
 
     return (
-        <div className="min-h-screen bg-gray-100"> 
-            <DefaultHeader /> {/* Your application's main header (assumed fixed, 80px tall) */}
+        <div className="min-h-screen bg-gray-100 flex flex-col"> 
+            <DefaultHeader />
             
-            {/* Wrapper for all scrollable content below DefaultHeader and above NavbarLeagues */}
-            {/* pt-[80px] to clear fixed DefaultHeader. */}
-            {/* pb-[60px] to clear fixed NavbarLeagues (assumed 60px tall). */}
-            <div className="pt-[80px] pb-[60px]">
-                <PageTitleBar />   {/* The "Park Field Status" bar, now scrolls */}
+            <div className="flex-grow w-full pt-[80px] pb-[60px] flex flex-col items-center">
+                {/* MODIFIED: Pass the pageTitle prop to PageTitleBar */}
+                <PageTitleBar title={pageTitle} />
 
                 {loading && (
                     <div className={statusMessageWrapperClass}>Loading field statuses...</div>
@@ -93,37 +99,48 @@ const FieldStatusDisplay: React.FC = () => {
                         Error loading data: {error}
                     </div>
                 )}
+                {/* MODIFIED: Update "no data" message to reflect filtering */}
                 {!loading && !error && (!displayParks || displayParks.length === 0) && (
-                    <div className={statusMessageWrapperClass}>No field status data available.</div>
+                    <div className={statusMessageWrapperClass}>
+                        No field status data available for {pageTitle.replace('Statuses', '').trim()}.
+                    </div>
                 )}
 
                 {!loading && !error && displayParks && displayParks.length > 0 && (
-                    <main className="p-4 md:p-6 lg:p-8"> {/* No extra pt/pb needed here as parent handles it */}
+                    <main className="p-4 md:p-6 lg:p-8 w-full max-w-3xl">
                         <div className="space-y-6">
-                            {displayParks.map((park) => (
-                                <div key={park.name} className={`p-4 md:p-6 rounded-lg bg-white shadow-lg border-l-4 ${getStatusColor(park.overallStatus).split(' ')[2]}`}>
+                            {displayParks.map((park) => ( // This now maps over the filtered 'displayParks'
+                                <div key={park.name} className={`p-4 md:p-6 rounded-lg bg-white shadow-lg border-l-4 ${getStatusColorClasses(park.overallStatus).split(' ')[2]}`}>
                                     <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-3">
                                         <h2 className="text-2xl font-semibold text-blue-700">{park.name}</h2>
-                                        <span className={`px-3 py-1 text-sm font-medium rounded-full ${getStatusColor(park.overallStatus)}`}>
+                                        <span className={`mt-2 sm:mt-0 px-3 py-1 text-sm font-medium rounded-full ${getStatusColorClasses(park.overallStatus)}`}>
                                             Overall: {park.overallStatus}
                                         </span>
                                     </div>
                                     <p className="text-sm text-gray-600 mb-1">{park.address}</p>
-                                    <p className="text-xs text-gray-500 mb-4">Last Updated: {park.fields[0]?.updateTime || 'N/A'}</p>
+                                    <p className="text-xs text-gray-500 mb-4">
+                                        Data source: {park.source} | Last Updated: {park.fields[0]?.updateTime || (park.source === "OceePark.com" && park.fields.every(f => f.updateTime === "N/A") ? "N/A" : "Not specified")}
+                                    </p>
+                                    
                                     {park.fields && park.fields.length > 0 && (
                                         <div className="mt-4 space-y-3">
                                             <h3 className="text-md font-semibold text-gray-800">Field Details:</h3>
                                             {park.fields.map((field, index) => (
-                                                <div key={index} className={`p-3 rounded-md border ${getStatusColor(field.status)}`}>
+                                                <div key={index} className={`p-3 rounded-md border ${getStatusColorClasses(field.status)}`}>
                                                     <div className="flex justify-between items-center">
                                                         <p className="font-medium text-gray-800">{field.name}</p>
-                                                        <span className={`text-xs px-2 py-0.5 rounded-full ${getStatusColor(field.status)}`}>{field.status}</span>
+                                                        <span className={`text-xs px-2 py-0.5 rounded-full ${getStatusColorClasses(field.status)}`}>{field.status}</span>
                                                     </div>
                                                     {field.message && <p className="text-xs text-gray-600 mt-1"><em>Note: {field.message}</em></p>}
-                                                    <p className="text-xs text-gray-500 mt-1">Updated: {field.updateTime}</p>
+                                                    {(park.source !== "OceePark.com" || field.updateTime !== "N/A") && field.updateTime &&
+                                                        <p className="text-xs text-gray-500 mt-1">Updated: {field.updateTime}</p>
+                                                    }
                                                 </div>
                                             ))}
                                         </div>
+                                    )}
+                                     {(!park.fields || park.fields.length === 0) && (
+                                        <p className="text-sm text-gray-500 mt-4">No individual field details available for this park.</p>
                                     )}
                                 </div>
                             ))}
@@ -131,20 +148,48 @@ const FieldStatusDisplay: React.FC = () => {
                     </main>
                 )}
             </div>
-            <NavbarLeagues /> {/* Your application's navigation bar (assumed fixed, 60px tall) */}
+            <NavbarLeagues />
         </div>
     );
 };
 
-const App: React.FC = () => {
+// Remove the simple App component if it's not your actual page structure.
+// const App: React.FC = () => {
+//     return (
+//         <div className="App">
+//             <FieldStatusDisplay sourceFilter="SOME_DEFAULT_FILTER_IF_NEEDED" pageTitle="Default Title" />
+//         </div>
+//     );
+// };
+
+// If this file IS your page (e.g., pages/ayba-status.tsx), then you'd structure it like this:
+// (Assuming FieldStatusDisplay, PageTitleBar are defined above or imported)
+
+/*
+// EXAMPLE: How you would structure an actual page file, e.g., pages/ayba-status.tsx
+
+import React from 'react'; // Already imported at the top
+// ... other imports like DefaultHeader, NavbarLeagues if they are part of a layout ...
+// ... Assume FieldStatusDisplay and PageTitleBar are defined in this file or imported from components ...
+
+export default function AYBAStatusPageActual() {
+  return (
+    // FieldStatusDisplay already includes DefaultHeader, PageTitleBar, NavbarLeagues in its structure
+    <FieldStatusDisplay 
+      sourceFilter="Alpharetta Youth Baseball (Blue Sombrero)" 
+      pageTitle="AYBA Field Statuses" 
+    />
+  );
+}
+*/
+
+// If FieldStatusDisplay is a reusable component (e.g. in 'components/FieldStatusDisplay.tsx')
+// then this file would just export it:
+export default function AYBAStatusPageActual() {
     return (
-        <div className="App">
-            <FieldStatusDisplay />
-        </div>
-    );
-};
-
-// If this file IS `src/app/leagues/ayba/fieldstatus/page.tsx`, 
-// then `FieldStatusDisplay` should be the default export.
-export default FieldStatusDisplay; 
-// Changed default export to FieldStatusDisplay as it's likely the page component.
+        <FieldStatusDisplay 
+        sourceFilter="Alpharetta Youth Baseball (Blue Sombrero)" 
+        pageTitle="AYBA Field Statuses" 
+      />
+    )
+}

@@ -4,10 +4,11 @@
 import React, { useState } from 'react'; // Import useState
 import { DefaultHeader } from '@/components/DefaultHeader';
 import { NavbarLeagues } from '@/components/NavbarLeagues';
-import { RectangleContainer } from '@/components/RectangleContainer';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image'; // Import Image component
+import oceeImage from '../../../app/assets/ocee.png';
+import oceeParkImage from '../../../app/assets/ocee_parking2x.png';
 import {
   Dialog,
   DialogContent,
@@ -46,13 +47,12 @@ export default function OceeParkPage() {
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
       <DefaultHeader />
       <div className="flex-grow relative w-full">
-        <RectangleContainer>
           <div className="flex justify-center relative mb-4">
             {/* Page Title */}
             <span
-              className="absolute font-bold text-3xl text-black whitespace-nowrap" // Added whitespace-nowrap
+              className="absolute font-bold text-3xl text-white whitespace-nowrap" // Added whitespace-nowrap
               style={{
-                  top: '30px',
+                  top: '90px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                }}
@@ -61,14 +61,14 @@ export default function OceeParkPage() {
             </span>
             {/* Ocee Park Logo */}
             <Image
-              src={oceeParkLogoUrl}
+              src={oceeImage}
               alt="Ocee Park Logo"
               data-ai-hint="ocee park logo baseball" // Add hint for potential image search
               width={175}
               height={175}
               style={{
                 position: 'absolute',
-                top: '65px', // Position below title
+                top: '130px', // Position below title
                 left: '50%',
                 transform: 'translateX(-50%)',
               }}
@@ -94,7 +94,7 @@ export default function OceeParkPage() {
 
 
           {/* Buttons Container */}
-          <div className="absolute bottom-[40px] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4 w-full px-4">
+          <div className="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4 w-full px-4">
             {buttons.map((buttonInfo) => (
               <Button
                 key={buttonInfo.name}
@@ -105,7 +105,6 @@ export default function OceeParkPage() {
               </Button>
             ))}
           </div>
-        </RectangleContainer>
       </div>
       <NavbarLeagues />
 
@@ -127,7 +126,7 @@ export default function OceeParkPage() {
            </DialogClose>
           <div className="relative w-full h-auto"> {/* Container for Image */}
             <Image
-              src={oceeParkingImageUrl}
+              src={oceeParkImage}
               alt="Ocee Park Parking Map"
               data-ai-hint="parking map aerial view baseball park" // Updated hint
               width={390} // Set width
