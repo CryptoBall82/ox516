@@ -34,7 +34,7 @@ export default function Home() {
               height={175}
               style={{
                 position: 'absolute',
-                top: '30px',
+                top: '90px',
                 left: '50%',
                 transform: 'translateX(-50%)',
               }}
