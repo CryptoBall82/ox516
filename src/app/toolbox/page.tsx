@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CloudSun, Users, HelpCircle, GraduationCap } from 'lucide-react'; // Replaced BookOpen with GraduationCap
+import { CloudSun, HelpCircle, GraduationCap, BriefcaseBusiness } from 'lucide-react'; // Changed BriefcasePlus to BriefcaseBusiness
 import { useRouter } from 'next/navigation';
 
 // Inline SVG for Coin Toss can be kept or replaced if a suitable Lucide icon is preferred
@@ -113,8 +113,8 @@ export default function ToolboxPage() {
             title="Assignor Info"
             description="View assigner contacts and related information."
             href="/toolbox/officialroster" // Path remains /toolbox/officialroster for now
-            icon={<Users size={36} />}
-            actionText="View Info"
+            icon={<BriefcaseBusiness size={36} />}
+            actionText="View Contacts"
           />
         </div>
         
@@ -143,3 +143,4 @@ export default function ToolboxPage() {
     </div>
   );
 }
+
