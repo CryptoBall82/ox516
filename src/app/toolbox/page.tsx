@@ -62,7 +62,7 @@ export default function ToolboxPage() {
   const navigateToWeatherPage = () => router.push('/toolbox/weather'); // Placeholder, actual page needs creation
   const navigateToCoinTossPage = () => router.push('/toolbox/cointoss'); // Placeholder
   const navigateToUmpireClassroomPage = () => router.push('/toolbox/umpireclassroom'); // Placeholder
-  const navigateToOfficialRosterPage = () => router.push('/toolbox/officialroster'); // Placeholder
+  const navigateToAssignorInfoPage = () => router.push('/toolbox/officialroster'); // Path remains the same
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -110,11 +110,11 @@ export default function ToolboxPage() {
             actionText="Enter Classroom"
           />
           <ToolCard
-            title="Official Roster"
-            description="View assigner contacts and official rosters."
-            href="/toolbox/officialroster" // Placeholder route
+            title="Assignor Info"
+            description="View assigner contacts and related information."
+            href="/toolbox/officialroster" // Path remains /toolbox/officialroster for now
             icon={<Users size={36} />}
-            actionText="View Roster"
+            actionText="View Info"
           />
         </div>
         
