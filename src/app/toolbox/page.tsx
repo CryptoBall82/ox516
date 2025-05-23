@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { CloudSun, BookOpen, Users, HelpCircle, Settings2 } from 'lucide-react'; // Using Settings2 for generic Tools icon
+import { CloudSun, Users, HelpCircle, GraduationCap } from 'lucide-react'; // Replaced BookOpen with GraduationCap
 import { useRouter } from 'next/navigation';
 
 // Inline SVG for Coin Toss can be kept or replaced if a suitable Lucide icon is preferred
@@ -72,7 +72,7 @@ export default function ToolboxPage() {
           <CardHeader className="text-center">
             <div className="mx-auto mb-4">
               <Image
-                src="https://placehold.co/150x150.png"
+                src="https://placehold.co/100x100.png"
                 alt="Toolbox Icon"
                 width={100}
                 height={100}
@@ -106,7 +106,7 @@ export default function ToolboxPage() {
             title="Umpire Classroom"
             description="Access training materials and rule refreshers."
             href="/toolbox/umpireclassroom" // Placeholder route
-            icon={<BookOpen size={36} />}
+            icon={<GraduationCap size={36} />}
             actionText="Enter Classroom"
           />
           <ToolCard
@@ -129,7 +129,7 @@ export default function ToolboxPage() {
             <span className="text-center text-sm">Coin Toss</span>
           </Button>
           <Button onClick={navigateToUmpireClassroomPage} variant="outline" className="flex flex-col h-24 items-center justify-center p-2 group">
-            <BookOpen className="h-8 w-8 mb-1 text-primary group-hover:text-primary-foreground" />
+            <GraduationCap className="h-8 w-8 mb-1 text-primary group-hover:text-primary-foreground" />
             <span className="text-center text-sm">Ump Class</span>
           </Button>
           <Button onClick={navigateToOfficialRosterPage} variant="outline" className="flex flex-col h-24 items-center justify-center p-2 group">
