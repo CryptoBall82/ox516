@@ -98,7 +98,6 @@ export default function ToolboxPage() {
         <div className="absolute bottom-[90px] left-0 right-0 flex justify-center">
           <div className="grid grid-cols-2 gap-y-[25px] gap-x-[25px] p-4">
             {toolButtons.map((buttonInfo) => {
-              // const IconComponent = buttonInfo.icon; // Not needed anymore as buttonInfo.icon is the element
               return (
                 <button
                   key={buttonInfo.name}
