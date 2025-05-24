@@ -9,7 +9,7 @@ import { NavbarTools } from '@/components/NavbarTools';
 
 export default function RosterDocumentPage() {
   // Updated Google Sheet URL for embedding (using /preview)
-  const documentUrl = "https://docs.google.com/spreadsheets/d/1vyAhaB_yBzRR6MPpspfypsFiBN-WUJP4/preview"; 
+  const documentUrl = "https://docs.google.com/spreadsheets/d/1GyoS9sNqgmltdAX91GrTLDKe12qp9u7QJlE57d98rAc/preview"; 
 
   return (
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
@@ -29,3 +29,4 @@ export default function RosterDocumentPage() {
     </div>
   );
 }
+
