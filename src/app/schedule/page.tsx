@@ -1,3 +1,4 @@
+// src/app/schedule/page.tsx
 
 'use client';
 
@@ -7,7 +8,6 @@ import { NavbarSchedule } from '@/components/NavbarSchedule';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image'; // Import the Next.js Image component
-import scheduleImage from '../assets/calendary225.png';
 
 // Inline SVG for Google Logo
 const GoogleLogoIcon = () => (
@@ -25,9 +25,6 @@ const AppleLogoIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" strokeWidth="3" stroke="#000000" fill="none"><path d="M51.71,25.51s-4.17-4.9-9.6-4.9A20.22,20.22,0,0,0,33.9,22.3a2.82,2.82,0,0,1-2.08.11c-2.1-.68-6.14-1.87-9.76-1.58-4.13.33-7.11,4.22-7.11,4.22s-3.34,4-3.34,11.32a24.83,24.83,0,0,0,7,17.68s4.54,5.49,8.46,3.11a10,10,0,0,1,10-.44c2,1.23,5.74,1.71,8-.56a26.54,26.54,0,0,0,6.9-11s-6.45-4.45-6.23-9.91S51.71,25.51,51.71,25.51Z" strokeWidth="3"/><path d="M33.35,17.67a10.33,10.33,0,0,1,8.7-11.11S42.94,16.61,33.35,17.67Z"/></svg>
 );
 
-// Define RectangleContainer or import if it's a separate component
-// For now, using a simple div as a placeholder for RectangleContainer
-
 export default function Schedule() {
   const router = useRouter();
 
@@ -42,32 +39,36 @@ export default function Schedule() {
     // router.push('/schedule/ical'); // Example for iCal navigation if needed
   };
 
-
-  return (    
-  <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
+  return (
+    <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
       <DefaultHeader />
-      <div className="flex-grow relative w-full">
+      <div className="flex-grow relative w-full pt-[75px] pb-[75px]"> {/* Added padding for header/navbar */}
         {/* Container for Image and Text */}
         <div className="flex flex-col items-center pt-8"> {/* Added padding top for spacing */}
           {/* Schedule Text */}
           <span
-            className="font-bold text-3xl text-black mb-4" // Margin bottom for spacing
+            className="font-bold text-3xl text-foreground mb-4" // Margin bottom for spacing, changed text-black to text-foreground
           >
             Schedule
           </span>
 
           {/* Image Display */}
           <Image
-            src={scheduleImage} // Using placeholder image
+            src="https://placehold.co/225x225.png" // Using placeholder image
             alt="Calendar icon for Schedule page"
-            width={225}
-            height={225}
+            data-ai-hint="calendar schedule"
+            width={191}
+            height={175}
             className="mb-8"
-            data-ai-hint="calendar schedule" />
+            style={{
+              width: 'auto',
+              height: '175px'
+            }}
+            />
         </div>
 
         {/* Buttons Container - Centered */}
-        <div className="flex flex-col items-center justify-center"> {/* Removed h-full to allow natural height */}
+        <div className="flex flex-col items-center justify-center">
           {/* Google Calendar Button */}
           <Button
             className="w-[225px] h-[80px] bg-white text-black border-2 border-[rgba(204,0,0,1)] hover:bg-gray-100 rounded-md shadow-[0_0_8px_4px_rgba(0,0,0,.5)] hover:scale-105 transition-transform relative mb-8 font-bold flex items-center px-4 space-x-3"
@@ -86,7 +87,8 @@ export default function Schedule() {
             <span className="flex-grow text-center text-lg">iCal</span>
           </Button>
         </div>
-    </div><NavbarSchedule /></div>
+      </div>
+      <NavbarSchedule />
+    </div>
   );
 }
-
