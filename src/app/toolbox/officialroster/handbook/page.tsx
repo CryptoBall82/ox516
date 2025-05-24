@@ -6,7 +6,8 @@ import { DefaultHeader } from '@/components/DefaultHeader';
 import { NavbarTools } from '@/components/NavbarTools';
 
 export default function AssignorHandbookPage() {
-  const documentUrl = "https://drive.google.com/file/d/1ORFf0wJ-fwuGhgSBC9iMukbohSjcXJ8e/view";
+  // Use the /preview URL for Google Drive for better embed compatibility
+  const documentUrl = "https://drive.google.com/file/d/1ORFf0wJ-fwuGhgSBC9iMukbohSjcXJ8e/preview";
 
   return (
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">

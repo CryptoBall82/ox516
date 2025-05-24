@@ -6,8 +6,8 @@ import { DefaultHeader } from '@/components/DefaultHeader';
 import { NavbarLeagues } from '@/components/NavbarLeagues';
 
 export default function AybaRulesPage() {
-  // Use the /view URL for Google Drive for potentially more features
-  const documentUrl = "https://drive.google.com/file/d/1SnZv8FBa69mk9GSixCiPyR0tptH_naRR/view";
+  // Use the /preview URL for Google Drive for better embed compatibility
+  const documentUrl = "https://drive.google.com/file/d/1SnZv8FBa69mk9GSixCiPyR0tptH_naRR/preview";
 
   return (
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">

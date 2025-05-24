@@ -7,8 +7,8 @@ import { NavbarLeagues } from '@/components/NavbarLeagues';
 import Image from 'next/image'; // Import Image component
 
 export default function PerfectGamePage() {
-  // Use the /view URL for Google Drive for potentially more features
-  const documentUrl = "https://drive.google.com/file/d/154fDNmVovM1G1Z3775U4VhXIssjwVuVa/view";
+  // Use the /preview URL for Google Drive for better embed compatibility
+  const documentUrl = "https://drive.google.com/file/d/154fDNmVovM1G1Z3775U4VhXIssjwVuVa/preview";
   // Removed pgLogoUrl
 
   return (
@@ -18,7 +18,7 @@ export default function PerfectGamePage() {
       <div className="flex-grow relative w-full pt-[90px] pb-[90px] flex flex-col items-center px-4 space-y-4">
 
         {/* Title */}
-        <span className="font-bold text-3xl text-black">
+        <span className="font-bold text-3xl text-foreground"> {/* Changed text-black to text-foreground */}
           Perfect Game
         </span>
 
