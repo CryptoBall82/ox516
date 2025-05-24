@@ -1,11 +1,8 @@
+
 'use client';
 
 import React from 'react';
-import SportsBaseballOutlinedIcon from '@mui/icons-material/SportsBaseballOutlined';
-import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined';
-import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
-import ConstructionOutlinedIcon from '@mui/icons-material/ConstructionOutlined';
-import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined';
+import { Users, CalendarDays, Home, Construction, Sparkles } from 'lucide-react'; // Replaced MUI icons
 import {useRouter} from 'next/navigation';
 
 interface NavbarIconProps {
@@ -18,23 +15,24 @@ interface NavbarIconProps {
 const NavbarIcon: React.FC<NavbarIconProps> = ({name, text, onClick, isActive}) => {
   const iconColor = isActive ? 'rgba(0,0,0,1)' : 'rgba(255,255,255,1)';
   const textColor = isActive ? 'rgba(0,0,0,1)' : 'rgba(255,255,255,1)'; // Use textColor for text
+  const IconSize = 24; // Standard size for Lucide icons
 
   let iconComponent;
   switch (name) {
-    case 'Baseball':
-      iconComponent = <SportsBaseballOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
+    case 'Users': // Changed from 'Baseball'
+      iconComponent = <Users style={{ color: iconColor }} size={IconSize} />;
       break;
     case 'Calendar':
-      iconComponent = <CalendarMonthOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
+      iconComponent = <CalendarDays style={{ color: iconColor }} size={IconSize} />;
       break;
     case 'Home':
-      iconComponent = <CottageOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
+      iconComponent = <Home style={{ color: iconColor }} size={IconSize} />;
       break;
     case 'Tools':
-      iconComponent = <ConstructionOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
+      iconComponent = <Construction style={{ color: iconColor }} size={IconSize} />;
       break;
     case 'Auto awesome':
-      iconComponent = <AutoAwesomeOutlinedIcon style={{ color: iconColor, fontSize: '24px' }} />;
+      iconComponent = <Sparkles style={{ color: iconColor }} size={IconSize} />;
       break;
     default:
       iconComponent = null;
@@ -53,15 +51,15 @@ const NavbarSchedule: React.FC = () => {
   const navigateToLeaguesPage = () => router.push('/leagues');
   const navigateToSchedulePage = () => router.push('/schedule');
   const navigateToHomePage = () => router.push('/home');
-  const navigateToToolsPage = () => router.push('/toolbox');
-  const navigateToOfficiaX_AIPage = () => router.push('/ai-assistant');
+  const navigateToToolsPage = () => router.push('/toolbox'); // Corrected path
+  const navigateToOfficiaX_AIPage = () => router.push('/ai-assistant'); // Corrected path
 
   return (
     <nav
-      className="fixed bottom-0 w-full h-[75px] bg-[rgba(204,0,0,1)] shadow-[0_-4px_10px_4px_rgba(187,187,187,.5)] z-10 flex items-center justify-between px-4"
+      className="fixed bottom-0 w-full h-[75px] bg-[rgba(204,0,0,1)] shadow-[0_-4px_10px_4px_rgba(187,187,187,0)] z-10 flex items-center justify-between px-4"
     >
       <div style={{paddingLeft: '5px'}}>
-        <NavbarIcon name="Baseball" text="Leagues" onClick={navigateToLeaguesPage} isActive={false} />
+        <NavbarIcon name="Users" text="Leagues" onClick={navigateToLeaguesPage} isActive={false} />
       </div>
       <NavbarIcon name="Calendar" text="Schedule" onClick={navigateToSchedulePage} isActive={true} />
       <NavbarIcon name="Home" text="Home" onClick={navigateToHomePage} isActive={false} />

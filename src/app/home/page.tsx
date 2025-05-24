@@ -99,7 +99,7 @@ export default function Home() {
                     w-[120px] h-[120px]
                     bg-white ${textColor}
                     border-2 border-primary
-                    shadow-[0_0_8px_4px_rgba(0,0,0,.5)] rounded-md
+                    shadow-[0_0_12px_8px_rgba(255,255,255,.5)] rounded-md
                     hover:scale-105 hover:bg-gray-50 transition-transform relative
                     flex flex-col items-center justify-center p-1
                   `}
