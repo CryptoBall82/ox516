@@ -7,7 +7,7 @@ import { NavbarTools } from '@/components/NavbarTools';
 
 export default function AssignorHandbookPage() {
   // Use the /view URL for Google Drive for better embed compatibility
-  const documentUrl = "https://docs.google.com/document/d/18R1-YIN3JhPJ-3gw0_W5JZOJeDYfM7e-/view";
+  const documentUrl = "https://drive.google.com/file/d/1H9D2FS6Z3Dz4AV4X3ilgHFJLGInx2kE9/view";
 
   return (
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
@@ -29,3 +29,4 @@ export default function AssignorHandbookPage() {
     </div>
   );
 }
+
