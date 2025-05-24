@@ -7,7 +7,9 @@ import { DefaultHeader } from '@/components/DefaultHeader';
 import { NavbarSchedule } from '@/components/NavbarSchedule';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image'; // Import the Next.js Image component
+import Image from 'next/image'; 
+import scheduleImage from '../../app/assets/calendary225.png'; // Your image import
+// Import the Next.js Image component
 
 // Inline SVG for Google Logo
 const GoogleLogoIcon = () => (
@@ -54,7 +56,7 @@ export default function Schedule() {
 
           {/* Image Display */}
           <Image
-            src="https://placehold.co/225x225.png" // Using placeholder image
+            src={scheduleImage} // Using placeholder image
             alt="Calendar icon for Schedule page"
             data-ai-hint="calendar schedule"
             width={191}
@@ -64,6 +66,7 @@ export default function Schedule() {
               width: 'auto',
               height: '175px'
             }}
+            priority
             />
         </div>
 
