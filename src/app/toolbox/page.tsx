@@ -4,107 +4,76 @@
 import React from 'react';
 import { DefaultHeader } from '@/components/DefaultHeader';
 import { NavbarTools } from '@/components/NavbarTools';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import Image from 'next/image';
-import { CloudSun, GraduationCap, BriefcaseBusiness, HandCoins } from 'lucide-react'; // Changed HelpCircle to HandCoins
 import { useRouter } from 'next/navigation';
-import CoinTossIcon from '../../app/assets/coin-toss3.png';
 import toolboxImage from '../../app/assets/tool225.png';
-
-
-interface ToolCardProps {
-  title: string;
-  description: string;
-  href: string;
-  icon: React.ReactNode;
-  actionText: string;
-}
-
-function ToolCard({ title, description, href, icon, actionText }: ToolCardProps) {
-  return (
-    <Card className="hover:shadow-accent/20 transition-shadow duration-300 flex flex-col">
-      <CardHeader className="flex flex-row items-start gap-4 space-y-0 pb-2">
-        <div className="flex-shrink-0 p-2 bg-accent/10 rounded-lg text-accent">{icon}</div>
-        <div className="flex-1">
-          <CardTitle className="text-xl">{title}</CardTitle>
-          <CardDescription className="text-sm">{description}</CardDescription>
-        </div>
-      </CardHeader>
-      <CardContent className="mt-auto pt-0">
-        <Button asChild className="w-full bg-primary hover:bg-primary/90">
-          <Link href={href}>{actionText}</Link>
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
 
 export default function ToolboxPage() {
   const router = useRouter();
 
-  // Navigation handlers (can be simplified if direct links are used in ToolCard)
-  const navigateToWeatherPage = () => router.push('/toolbox/weather'); 
-  const navigateToCoinTossPage = () => router.push('/toolbox/cointoss'); 
-  const navigateToUmpireClassroomPage = () => router.push('/toolbox/umpireclassroom'); 
-  const navigateToAssignorInfoPage = () => router.push('/toolbox/officialroster'); 
+  const toolButtons = [
+    { name: 'Weather Center', path: '/toolbox/weather' },
+    { name: 'Coin Toss', path: '/toolbox/cointoss' },
+    { name: 'Umpire Classroom', path: '/toolbox/umpireclassroom' },
+    { name: 'Assignor Info', path: '/toolbox/officialroster' },
+  ];
+
+  const handleToolClick = (path: string) => {
+    router.push(path);
+  };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col h-screen items-center mx-auto max-w-[500px] bg-background">
       <DefaultHeader />
-      <main className="flex-grow container mx-auto px-4 py-8 pt-24 pb-24"> {/* pt-24 for header, pb-24 for navbar */}
-        <Card className="shadow-xl border-accent/50 mb-8">
-          <CardHeader className="text-center">
-            <div className="mx-auto mb-4">
-              <Image
-                src={toolboxImage}
-                alt="Toolbox Icon"
-                width={175}
-                height={175}
-                className="rounded-lg border border-border shadow-md"
-                data-ai-hint="tools wrench hammer"
-              />
-            </div>
-            <CardTitle className="text-3xl font-bold text-accent">Official's Toolbox</CardTitle>
-            <CardDescription className="text-lg text-muted-foreground">
-              Your essential toolkit for game day and beyond.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+      <div className="flex-grow relative w-full">
+        {/* Page Title */}
+        <span
+          className="absolute font-bold text-3xl text-white" // Using text-white to match leagues page
+          style={{
+            top: '90px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+          }}
+        >
+          Toolbox
+        </span>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          <ToolCard
-            title="Weather Center"
-            description="Check current and forecasted weather conditions."
-            href="/toolbox/weather" 
-            icon={<CloudSun size={36} />}
-            actionText="View Weather"
-          />
-          <ToolCard
-            title="Coin Toss"
-            description="A quick and easy virtual coin toss."
-            href="/toolbox/cointoss" 
-            icon={<Image src={CoinTossIcon} alt="Coin Toss Icon" width={36} height={36} />}
-            actionText="Flip Coin"
-          />
-          <ToolCard
-            title="Umpire Classroom"
-            description="Access training materials and rule refreshers."
-            href="/toolbox/umpireclassroom" 
-            icon={<GraduationCap size={36} />}
-            actionText="Enter Classroom"
-          />
-          <ToolCard
-            title="Assignor Info"
-            description="View assigner contacts and related information."
-            href="/toolbox/officialroster" 
-            icon={<BriefcaseBusiness size={36} />}
-            actionText="View Contacts"
-          />
+        {/* Image Display */}
+        <Image
+          src={toolboxImage}
+          alt="Toolbox Icon"
+          data-ai-hint="tools wrench hammer"
+          width={225} // Original width
+          height={129} // Match leagues image height
+          style={{
+            position: 'absolute',
+            top: '130px', // Position image below text
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 'auto', // Maintain aspect ratio based on height
+            height: '129px', // Fixed height
+          }}
+          priority
+          onError={(e: any) => {
+            e.currentTarget.onerror = null; // prevents looping
+            e.currentTarget.src = 'https://placehold.co/225x129.png'; // Placeholder with matched height
+          }}
+        />
+
+        {/* Buttons Container */}
+        <div className="absolute bottom-[90px] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-4 w-full px-4">
+          {toolButtons.map((tool) => (
+            <Button
+              key={tool.name}
+              className="w-[225px] h-[45px] bg-white text-black border-2 border-primary hover:bg-gray-100 rounded-md shadow-[0_0_8px_4px_rgba(0,0,0,.5)] hover:scale-105 transition-transform relative mb-[5px] font-bold"
+              onClick={() => handleToolClick(tool.path)}
+            >
+              {tool.name}
+            </Button>
+          ))}
         </div>
-        
-      </main>
+      </div>
       <NavbarTools />
     </div>
   );
