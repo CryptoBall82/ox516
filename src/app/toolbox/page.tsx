@@ -10,6 +10,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CloudSun, GraduationCap, BriefcaseBusiness, HandCoins } from 'lucide-react'; // Changed HelpCircle to HandCoins
 import { useRouter } from 'next/navigation';
+import CoinTossIcon from '../../app/assets/coin-toss3.png';
+import toolboxImage from '../../app/assets/tool225.png';
+
 
 interface ToolCardProps {
   title: string;
@@ -55,10 +58,10 @@ export default function ToolboxPage() {
           <CardHeader className="text-center">
             <div className="mx-auto mb-4">
               <Image
-                src="https://placehold.co/100x100.png"
+                src={toolboxImage}
                 alt="Toolbox Icon"
-                width={100}
-                height={100}
+                width={175}
+                height={175}
                 className="rounded-lg border border-border shadow-md"
                 data-ai-hint="tools wrench hammer"
               />
@@ -82,7 +85,7 @@ export default function ToolboxPage() {
             title="Coin Toss"
             description="A quick and easy virtual coin toss."
             href="/toolbox/cointoss" 
-            icon={<HandCoins size={36} /> } 
+            icon={<Image src={CoinTossIcon} alt="Coin Toss Icon" width={36} height={36} />}
             actionText="Flip Coin"
           />
           <ToolCard

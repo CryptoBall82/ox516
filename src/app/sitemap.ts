@@ -31,6 +31,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/toolbox',
     '/toolbox/cointoss',
     '/toolbox/officialroster',
+    '/toolbox/officialroster/handbook',
+    '/toolbox/officialroster/roster-doc',
     '/toolbox/umpireclassroom',
     '/toolbox/weather',
   ];
