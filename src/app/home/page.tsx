@@ -29,6 +29,7 @@ export default function Home() {
       icon: SportsBaseballOutlinedIcon,
       iconSize: '37px',
       fontSize: '14pt',
+      textColor: 'text-black',
       // You can add specific text color here if needed, e.g., textColor: '#0000FF'
     },
     {
@@ -36,21 +37,27 @@ export default function Home() {
       action: navigateToSchedulePage,
       icon: CalendarMonthOutlinedIcon,
       iconSize: '37px',
-      fontSize: '14pt'
+      fontSize: '14pt',
+      textColor: 'text-black',
+
     },
     {
       name: 'Tools',
       action: navigateToToolsPage,
       icon: ConstructionOutlinedIcon,
       iconSize: '37px',
-      fontSize: '14pt'
+      fontSize: '14pt',
+      textColor: 'text-black',
+
     },
     {
       name: 'OfficiaX AI',
       action: navigateToOfficiaX_AIPage,
       icon: AutoAwesomeOutlinedIcon,
       iconSize: '37px',
-      fontSize: '13pt'
+      fontSize: '13pt',
+      textColor: 'text-black',
+
     },
   ];
 
@@ -82,7 +89,7 @@ export default function Home() {
             {buttons.map((buttonInfo) => {
               const IconComponent = buttonInfo.icon;
               // Define text color: use buttonInfo.textColor if provided, otherwise default to a dark color for contrast with white bg
-              const textColor = buttonInfo.textColor || 'text-neutral-800'; // Default dark text for white bg
+              const textColor = buttonInfo.textColor || '#000000'; // Default dark text for white bg
 
               return (
                 <button
