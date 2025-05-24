@@ -18,6 +18,7 @@ interface ToolButtonInfo {
   name: string;
   path: string;
   icon: React.ReactNode; // Icon will be a fully formed React element
+  fontSize: string; // Added fontSize property
 }
 
 export default function ToolboxPage() {
@@ -28,24 +29,28 @@ export default function ToolboxPage() {
 
   const toolButtons: ToolButtonInfo[] = [
     {
-      name: 'Weather Center',
+      name: 'Weather',
       path: '/toolbox/weather',
-      icon: <ThunderstormOutlinedIcon sx={iconSizeStyle} className="mb-1" />
+      icon: <ThunderstormOutlinedIcon sx={iconSizeStyle} className="mb-1" />,
+      fontSize: '14pt' // Set font size to 14pt
     },
     {
       name: 'Coin Toss',
       path: '/toolbox/cointoss',
-      icon: <Image src={cointossIcon} alt="Coin Toss Icon" width={imageSize} height={imageSize} className="mb-1" />
+      icon: <Image src={cointossIcon} alt="Coin Toss Icon" width={imageSize} height={imageSize} className="mb-1" />,
+      fontSize: '13pt' // Set font size to 14pt
     },
     {
-      name: 'Umpire Classroom',
+      name: 'Ump Classroom',
       path: '/toolbox/umpireclassroom',
-      icon: <SchoolOutlinedIcon sx={iconSizeStyle} className="mb-1" />
+      icon: <SchoolOutlinedIcon sx={iconSizeStyle} className="mb-1" />,
+      fontSize: '11pt' // Set font size to 13pt
     },
     {
       name: 'Assignor Info',
       path: '/toolbox/officialroster',
-      icon: <BusinessCenterOutlinedIcon sx={iconSizeStyle} className="mb-1" />
+      icon: <BusinessCenterOutlinedIcon sx={iconSizeStyle} className="mb-1" />,
+      fontSize: '12pt' // Set font size to 14pt
     },
   ];
 
@@ -81,9 +86,6 @@ export default function ToolboxPage() {
             top: '130px', // Ensure this doesn't overlap with the title too much
             left: '50%',
             transform: 'translateX(-50%)',
-            // width & height props on Next/Image define aspect ratio.
-            // These inline styles will affect the displayed size.
-            // If you want it to be 129px high and width auto, ensure width/height props match aspect ratio.
             width: 'auto', // This will make the image scale based on the height, respecting aspect ratio
             height: '129px',
           }}
@@ -103,8 +105,8 @@ export default function ToolboxPage() {
                   key={buttonInfo.name}
                   onClick={() => handleToolClick(buttonInfo.path)}
                   className="
-                    w-[100px] h-[100px]
-                    bg-white text-black 
+                    w-[120px] h-[120px]
+                    bg-white text-black
                     border-2 border-primary
                     shadow-[0_0_8px_4px_rgba(0,0,0,.5)] rounded-md
                     hover:scale-105 hover:bg-gray-50 transition-transform relative
@@ -114,7 +116,8 @@ export default function ToolboxPage() {
                   {/* Render the icon element directly */}
                   {buttonInfo.icon}
                   <span
-                    className="text-black font-semibold text-xs text-center w-full px-1 truncate absolute bottom-1"
+                    className="text-black font-semibold text-center w-full px-1 truncate absolute bottom-1"
+                    style={{ fontSize: buttonInfo.fontSize }} // Apply font size from buttonInfo
                   >
                     {buttonInfo.name}
                   </span>
