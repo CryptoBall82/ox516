@@ -20,6 +20,7 @@ export default function AssignorHandbookPage() {
           frameBorder="0"
           allowFullScreen
           title="Assignor Handbook"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
         >
           Loading Assignor Handbook...
         </iframe>
@@ -28,4 +29,3 @@ export default function AssignorHandbookPage() {
     </div>
   );
 }
-
