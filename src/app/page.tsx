@@ -1,3 +1,4 @@
+
 // src/app/page.tsx
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/layout/logo";
@@ -38,7 +39,7 @@ export default function HomePage() {
               </Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="text-lg px-8 py-6 rounded-lg shadow-lg transform hover:scale-105 transition-transform border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              <Link href="/dashboard">Go to Home</Link>{/* Changed text from "Go to Dashboard" */}
+              <Link href="/home">Go to Home</Link>
             </Button>
           </div>
         </section>

@@ -1,3 +1,4 @@
+
 // src/hooks/use-auth-redirect.ts
 "use client";
 
@@ -22,7 +23,7 @@ export function useAuthRedirect({ redirectTo, requireAuth = true }: UseAuthRedir
     if (requireAuth && !isAuthenticated) {
       router.push(redirectTo || '/login');
     } else if (!requireAuth && isAuthenticated) {
-      router.push(redirectTo || '/dashboard');
+      router.push(redirectTo || '/home'); // Updated redirect to /home
     }
   }, [isAuthenticated, isLoading, router, requireAuth, redirectTo]);
 

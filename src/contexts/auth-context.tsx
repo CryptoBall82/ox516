@@ -1,3 +1,4 @@
+
 // src/contexts/auth-context.tsx
 "use client";
 
@@ -51,7 +52,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     } else {
       sessionStorage.setItem('officiaxUser', JSON.stringify(mockUser)); // Or use sessionStorage
     }
-    router.push('/dashboard');
+    router.push('/home'); // Updated redirect to /home
   };
 
   const logout = () => {
