@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -5,8 +6,8 @@ import { DefaultHeader } from '@/components/DefaultHeader';
 import { NavbarLeagues } from '@/components/NavbarLeagues';
 
 export default function TlTravelRulesPage() {
-  // Use the embed/preview URL for Google Drive
-  const documentUrl = "https://drive.google.com/file/d/14UkjX_9B45IlSosd1mQsTeqzpClg9Bb2/preview";
+  // Use the /view URL for Google Drive for potentially more features
+  const documentUrl = "https://drive.google.com/file/d/14UkjX_9B45IlSosd1mQsTeqzpClg9Bb2/view";
 
   return (
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">

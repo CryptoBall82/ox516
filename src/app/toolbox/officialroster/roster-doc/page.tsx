@@ -8,8 +8,8 @@ import { NavbarTools } from '@/components/NavbarTools';
 // import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; 
 
 export default function RosterDocumentPage() {
-  // Updated Google Sheet URL for embedding (using /preview)
-  const documentUrl = "https://docs.google.com/spreadsheets/d/1GyoS9sNqgmltdAX91GrTLDKe12qp9u7QJlE57d98rAc/preview"; 
+  // Use the full /edit?usp=sharing link for Google Sheets to get more features
+  const documentUrl = "https://docs.google.com/spreadsheets/d/1GyoS9sNqgmltdAX91GrTLDKe12qp9u7QJlE57d98rAc/edit?usp=sharing"; 
 
   return (
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
@@ -29,4 +29,3 @@ export default function RosterDocumentPage() {
     </div>
   );
 }
-

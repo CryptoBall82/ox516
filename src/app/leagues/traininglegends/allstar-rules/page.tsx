@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -5,8 +6,8 @@ import { DefaultHeader } from '@/components/DefaultHeader';
 import { NavbarLeagues } from '@/components/NavbarLeagues';
 
 export default function TlAllstarRulesPage() {
-  // Use the embed/preview URL for Google Drive
-  const documentUrl = "https://drive.google.com/file/d/15-TaYeLk3Voz8XWrvfJC2SvAaWNiX0Iw/preview";
+  // Use the /view URL for Google Drive for potentially more features
+  const documentUrl = "https://drive.google.com/file/d/15-TaYeLk3Voz8XWrvfJC2SvAaWNiX0Iw/view";
 
   return (
     <div className="flex flex-col h-screen items-center mx-auto max-w-[500px]">
